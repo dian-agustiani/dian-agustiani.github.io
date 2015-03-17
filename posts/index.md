@@ -1,9 +1,0 @@
----
-layout: post-index
-title: All Posts
-excerpt: "Article"
-image:
-  feature: nature-background.jpg
-  credit: WeGraphics
-  creditlink: http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/
----
