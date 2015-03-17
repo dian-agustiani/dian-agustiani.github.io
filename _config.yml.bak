@@ -28,23 +28,23 @@ kramdown:
 
 # Site owner
 owner:
-  name: dian agustiani
+  name: priawan harjunanto
   avatar: bio-photo3.jpg
-  bio: "this is it"
-  email: dian.agustiani@gmail.com
-  disqus-shortname: #username 
+  bio: "Describe your self."
+  email: priawan.harjunanto@gmail.com
+  disqus-shortname: priaonehaha 
   twitter: #username
-  facebook: #username
+  facebook: priawan.harjunanto
   google:
-    plus: 
+    plus: PriawanHarjunanto
     analytics: 
     verify: 
     ad-client: 
     ad-slot: 
   bing-verify: 
-  github: dian-agustiani
-  stackoverflow: #username
-  linkedin: #username
+  github: priaonehaha
+  stackoverflow: http://stackoverflow.com/users/1995667/priawan
+  linkedin: priawanharjunanto
   xing: #username
   instagram: #username
   lastfm: #username
