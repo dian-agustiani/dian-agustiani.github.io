@@ -1,68 +1,43 @@
+---
+sitemap: false
+---
+
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-<title type="text">dian-agustiani</title>
+<title type="text">{{ site.title }}</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://dian-agustiani.github.io/feed.xml" />
-<link rel="alternate" type="text/html" href="http://dian-agustiani.github.io" />
-<updated>2015-03-17T16:00:31+07:00</updated>
-<id>http://dian-agustiani.github.io/</id>
+<link rel="self" type="application/atom+xml" href="{{ site.url }}/feed.xml" />
+<link rel="alternate" type="text/html" href="{{ site.url }}" />
+<updated>{{ site.time | date_to_xmlschema }}</updated>
+<id>{{ site.url }}/</id>
 <author>
-  <name>dian agustiani</name>
-  <uri>http://dian-agustiani.github.io/</uri>
-  <email>dian.agustiani@gmail.com</email>
+  <name>{{ site.owner.name }}</name>
+  <uri>{{ site.url }}/</uri>
+  {% if site.owner.email %}<email>{{ site.owner.email }}</email>{% endif %}
 </author>
-
-
-  
-
+{% for post in site.posts limit:20 %}
+{% if post.author %}
+  {% assign author = site.data.authors[post.author] %}
+{% else %}
+  {% assign author = site.owner %}
+{% endif %}
 <entry>
-  <title type="html"><![CDATA[Resep Sayur Asem]]></title>
-  <link rel="alternate" type="text/html" href="http://dian-agustiani.github.io/resep-sayur-asem/" />
-  <id>http://dian-agustiani.github.io/resep-sayur-asem</id>
-  <updated>2013-03-17T00:00:00-00:00</updated>
-  <published>2015-03-17T00:00:00+07:00</published>
-  
+  <title type="html"><![CDATA[{{ post.title | cdata_escape }}]]></title>
+  <link rel="alternate" type="text/html" href="{{ site.url }}{{ post.url }}" />
+  <id>{{ site.url }}{{ post.id }}</id>
+  {% if post.modified %}<updated>{{ post.modified | to_xmlschema }}T00:00:00-00:00</updated>
+  <published>{{ post.date | date_to_xmlschema }}</published>
+  {% else %}<published>{{ post.date | date_to_xmlschema }}</published>
+  <updated>{{ post.date | date_to_xmlschema }}</updated>{% endif %}
   <author>
-    <name>dian agustiani</name>
-    <uri>http://dian-agustiani.github.io</uri>
-    <email>dian.agustiani@gmail.com</email>
+    <name>{{ author.name }}</name>
+    <uri>{{ site.url }}</uri>
+    {% if author.email %}<email>{{ author.email }}</email>{% endif %}
   </author>
   <content type="html">
-    &lt;h2 id=&quot;bahan&quot;&gt;Bahan&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;1&lt;/li&gt;
-  &lt;li&gt;2&lt;/li&gt;
-  &lt;li&gt;1&lt;/li&gt;
-  &lt;li&gt;2&lt;/li&gt;
-  &lt;li&gt;1&lt;/li&gt;
-  &lt;li&gt;2&lt;/li&gt;
-  &lt;li&gt;1&lt;/li&gt;
-  &lt;li&gt;2&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;bumbu&quot;&gt;Bumbu&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;1&lt;/li&gt;
-  &lt;li&gt;2&lt;/li&gt;
-  &lt;li&gt;1&lt;/li&gt;
-  &lt;li&gt;2&lt;/li&gt;
-  &lt;li&gt;1&lt;/li&gt;
-  &lt;li&gt;2&lt;/li&gt;
-  &lt;li&gt;1&lt;/li&gt;
-  &lt;li&gt;2&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;bumbu-1&quot;&gt;Bumbu&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;aaaaaaaaaaaaaa&lt;/li&gt;
-  &lt;li&gt;bbbbbbbbbbbbb&lt;/li&gt;
-  &lt;li&gt;ccccccccccccccccc&lt;/li&gt;
-  &lt;li&gt;dddddddddddddddddddd&lt;/li&gt;
-&lt;/ol&gt;
-
-    &lt;p&gt;&lt;a href=&quot;http://dian-agustiani.github.io/resep-sayur-asem/&quot;&gt;Resep Sayur Asem&lt;/a&gt; was originally published by dian agustiani at &lt;a href=&quot;http://dian-agustiani.github.io&quot;&gt;dian-agustiani&lt;/a&gt; on March 17, 2015.&lt;/p&gt;
+    {{ post.content | xml_escape }}
+    {% include _feed-footer.html %}
   </content>
 </entry>
-
+{% endfor %}
 </feed>
